@@ -21,12 +21,12 @@ This image uses  `atlas-cli` to create an empty Jira Software instance by launch
 
 ## 🎈 Usage <a name="usage"></a>
 
-Using it is easy, to run it in the foreground:
+This image is published to [Docker Hub](https://hub.docker.com/r/addono/jira-software-standalone). Using them is easy, to run it in the foreground:
 ```bash
 docker run -it -p 2990:2990 --name jira addono/jira-software-standalone
 ```
 
-Or in detached mode to run it in the background:
+Or in detached mode as to run it in the background:
 ```bash
 docker run -d -it -p 2990:2990 --name jira addono/jira-software-standalone
 ```

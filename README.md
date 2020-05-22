@@ -35,6 +35,32 @@ docker run -d -it -p 2990:2990 --name jira addono/jira-software-standalone
 
 _Note: Make sure that the `-i` flag is enabled, as without it the server will exit the moment it completed booting._
 
+## Travis CI
+
+This is one way on how to use this image in a Travis CI pipeline. Add the following lines to your `.travis.yaml` file and access it at the location specified in the environment variables.
+
+```yaml
+# Let the CI runner provision Docker for us
+services:
+  - docker
+
+# Spin up the Jira instance before we run our jobs
+before_install:
+# Launch a Jira instance in detached mode
+  - docker run -dit -p 2990:2990 --name jira addono/jira-software-standalone
+# Wait until Jira has booted
+  - until $(curl -u $CI_JIRA_ADMIN:$CI_JIRA_ADMIN_PASSWORD --output /dev/null --silent --head --fail $CI_JIRA_URL/rest/api/2/permissions); do sleep 5; done
+
+# Set the default hostname and admin user credentials as environment variables
+env:
+  global:
+    - CI_JIRA_URL=http://localhost:2990/jira
+    - CI_JIRA_ADMIN=admin
+    - CI_JIRA_ADMIN_PASSWORD=admin
+```
+
+
+
 ## ✨ Contributors <a name = "contributors"></a>
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

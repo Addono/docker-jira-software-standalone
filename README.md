@@ -3,7 +3,7 @@
 
 [![License](https://img.shields.io/github/license/Addono/docker-jira-software-standalone?style=flat-square)](https://github.com/Addono/docker-jira-software-standalone/blob/master/LICENSE)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://img.shields.io/badge/project%20status-Active-greengrass?style=flat-square)](https://www.repostatus.org/#active)
-![GitHub Workflow Status - Docker](https://img.shields.io/github/workflow/status/Addono/docker-jira-software-standalone/Docker?style=flat-square)
+![GitHub Workflow Status - Docker](https://img.shields.io/github/actions/workflow/status/Addono/docker-jira-software-standalone/dockerpublish.yml?style=flat-square)
 [
 ![Docker Image Pulls (all-time)](https://img.shields.io/docker/pulls/addono/jira-software-standalone?style=flat-square)
 ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/addono/jira-software-standalone?sort=semver&style=flat-square)

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Source-of-truth pom rendered into plugin/pom.xml at docker build time
+  by scripts/render-pom.sh. Tokens of the form @ARG_NAME@ are filled
+  from the matching Dockerfile ARG; mirror any change here in the ARG
+  block at the top of Dockerfile.
 
+  The single Jira-version-aware property left as a Maven expression is
+  ${env.JIRA_VERSION} so the same image can boot any patch within the
+  built major via `docker run -e JIRA_VERSION=...`.
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -179,16 +188,16 @@
 
     <properties>
         <jira.version>${env.JIRA_VERSION}</jira.version>
-        <amps.version>8.0.2</amps.version>
-        <plugin.testrunner.version>2.0.1</plugin.testrunner.version>
-        <atlassian.spring.scanner.version>1.2.13</atlassian.spring.scanner.version>
+        <amps.version>@AMPS_VERSION@</amps.version>
+        <plugin.testrunner.version>@TESTRUNNER_VERSION@</plugin.testrunner.version>
+        <atlassian.spring.scanner.version>@SPRING_SCANNER_VERSION@</atlassian.spring.scanner.version>
         <!-- This property ensures consistency between the key in atlassian-plugin.xml and the OSGi bundle's key. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <!-- TestKit version 6.x for JIRA 6.x -->
         <testkit.version>6.3.11</testkit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>@COMPILE_FLOOR@</maven.compiler.source>
+        <maven.compiler.target>@COMPILE_FLOOR@</maven.compiler.target>
     </properties>
 
 </project>

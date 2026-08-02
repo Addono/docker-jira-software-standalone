@@ -25,3 +25,4 @@ curl -fsSL \
   | tar -xz -C /opt/atlassian-plugin-sdk --strip-components=1
 
 chmod -R a+rx /opt/atlassian-plugin-sdk/bin
+ln -sf /opt/atlassian-plugin-sdk /root/.atlassian-plugin-sdk
